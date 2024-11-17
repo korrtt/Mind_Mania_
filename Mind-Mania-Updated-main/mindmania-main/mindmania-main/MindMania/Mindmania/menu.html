@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Mania</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap" rel="stylesheet">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3ec78, #af4261);
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.5s;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+            color: #735B2E;
+            font-family: 'Hanalei Fill', cursive;
+        }
+
+        .logo {
+            display: block;
+            margin: 10px auto;
+            width: 100px;
+            transform: scale(0.8);
+            animation: scaleUp 0.5s forwards;
+        }
+
+        @keyframes scaleUp {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .info {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        button {
+            background-color: #f7931a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #d87d14;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            background-color: #b06210;
+            transform: translateY(0);
+        }
+
+        .divider {
+            width: 80%;
+            margin: 20px auto;
+            border-bottom: 2px solid #735B2E;
+            opacity: 0.7;
+        }
+
+        .icon {
+            margin: 5px;
+            color: #735B2E;
+        }
+
+        .icon:hover {
+            color: #d87d14;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #735B2E;
+            text-align: center;
+        }
+
+        .header img {
+            position: absolute;
+            top: 2;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            border: 3px solid #735B2E;
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            to {
+                transform: translateX(-50%) rotate(360deg);
+            }
+        }
+
+        .design {
+            width: 100px;
+            height: 100px;
+            background: #f7931a;
+            position: absolute;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        #design1 {
+            top: 20px;
+            left: 20px;
+        }
+
+        #design2 {
+            bottom: 20px;
+            right: 20px;
+            background: #af4261;
+        }
+        .instruction{
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            width: 100%;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MIND MANIA</h1>
+        <div class="info">
+            <p>Total MindCoins Collected:</p>
+            <img src="/photos/logo.png" alt="Website Logo" class="logo">
+        </div>
+    </div>
+    <div class="content">
+        <p><br><br><br>Welcome to Mind Mania!</p>
+    </div>
+    <div class="instruction">
+        <p><b>*Reminder</b><br><br>
+        The Riddle contains random categories and difficulties.<br><br>
+        each difficulty gives different coins once answered.<br><br>
+        Once you click Riddle the countdown will start.
+        </p>
+    </div>
+    <div class="buttons">
+        <button onclick="goToThirdPage()">FARM</button>
+        <button onclick="goToRiddle()">RIDDLE</button>
+    </div>
+    <div class="divider"></div>
+    <div class="footer">
+        <p>Made with ❤ by TEAMBOG</p>
+    </div>
+    <div class="design" id="design1"></div>
+    <div class="design" id="design2"></div>
+    <script>
+        function goToThirdPage() {
+            window.location.href = '/Mindmania/Farm.html'; 
+        }
+        function goToRiddle(){
+            window.location.href='/Mindmania/Riddle.html'
+        }
+    </script>
+</body>
+</html>
+        
+
+
+
+
+

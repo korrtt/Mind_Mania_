@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Mania</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3ec78, #af4261);
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: #735B2E;
+            font-family: 'Hanalei Fill', cursive;
+        }
+
+        .logo {
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+        }
+
+        .info {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+            align-items: center;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding-top: 20px; 
+        }
+
+        .icon-container {
+            border: 2px solid #735B2E; 
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .icons img {
+            width: 50px;
+            cursor: pointer;
+        }
+
+        .buttons {
+            padding-top: 20px;
+        }
+
+        .back-button {
+            background-color: #f7931a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #d87d14;
+            transform: translateY(-3px);
+        }
+
+        .back-button:active {
+            background-color: #b06210;
+            transform: translateY(0);
+        }
+
+        .output {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .task-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .task-list h3 {
+            margin: 10px 0 5px;
+        }
+
+        .task-list p {
+            margin: 0;
+        }
+
+        .spacer {
+            height: 20px; 
+        }
+
+        .referral-list {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .referral-list p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MIND MANIA</h1>
+        <div class="info">
+            <p>Total MindCoins Collected:</p>
+            <img src="/photos/logo.png" alt="Website Logo" class="logo"> <!-- Add your logo image here -->
+        </div>
+    </div>
+    <div class="content" id="content">
+        <div class="output" id="ton-wallet-output"></div>
+        <div class="icons">
+            <div class="icon-container">
+                <img src="/photos/ton.png" alt="TON Logo" onclick="showTONWallet()" height="55" width="10"> <!-- Add your TON LOGO here -->
+            </div>
+            <div class="icon-container">
+                <img src="/photos/task list.png" alt="Task List Icon" onclick="showTaskList()"> <!-- Add your Task List Icon here -->
+            </div>
+            <div class="icon-container">
+                <img src="/photos/refer.png" alt="Referral Icon" onclick="showReferralList()" height="60" width="10"> <!-- Add your Referral Icon here -->
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="back-button" onclick="goBack()">BACK</button>
+    </div>
+    <script>
+        let dailyTask1 = 0;
+        let dailyTask2 = 0;
+        let weeklyTask1 = 0;
+        let weeklyTask2 = 0;
+        let referrals = []; 
+
+        function handleIconClick(iconName) {
+            alert('You clicked on the ' + iconName + ' icon.');
+        }
+
+        function showTONWallet() {
+            document.getElementById('ton-wallet-output').innerHTML = `
+                <img src="/photos/ton.png" alt="TON Logo" class="logo">
+                <p>Connect TON Wallet</p>
+            `;
+        }
+
+        function showTaskList() {
+            document.getElementById('ton-wallet-output').innerHTML = `
+                <div class="task-list">
+                    <h3>Daily Tasks:</h3>
+                    <p>Answer 5 riddles <span id="dailyTask1">${dailyTask1}/5</span></p>
+                    <p>Answer 10 riddles <span id="dailyTask2">${dailyTask2}/10</span></p>
+                    <h3>Weekly Tasks:</h3>
+                    <p>Answer 15 riddles <span id="weeklyTask1">${weeklyTask1}/15</span></p>
+                    <p>Answer 20 riddles <span id="weeklyTask2">${weeklyTask2}/20</span></p>
+                    <button onclick="completeTask()">Complete Task</button> <!-- Simulate task completion -->
+                </div>
+            `;
+        }
+
+        function completeTask() {
+            if (dailyTask1 < 5) dailyTask1++;
+            if (dailyTask2 < 10) dailyTask2++;
+            if (weeklyTask1 < 15) weeklyTask1++;
+            if (weeklyTask2 < 20) weeklyTask2++;
+
+            document.getElementById('dailyTask1').innerText = `${dailyTask1}/5`;
+            document.getElementById('dailyTask2').innerText = `${dailyTask2}/10`;
+            document.getElementById('weeklyTask1').innerText = `${weeklyTask1}/15`;
+            document.getElementById('weeklyTask2').innerText = `${weeklyTask2}/20`;
+        }
+
+        function showReferralList() {
+            let referralOutput = '<div class="referral-list"><h3>Referral List:</h3>';
+            if (referrals.length === 0) {
+                referralOutput += '<p>No referrals</p>';
+            } else {
+                referrals.forEach(referral => {
+                    referralOutput += `<p>${referral}</p>`;
+                });
+            }
+            referralOutput += '</div>';
+            document.getElementById('ton-wallet-output').innerHTML = referralOutput;
+        }
+
+        function goBack() {
+            window.location.href = '/Mindmania/Menu.html'; 
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
